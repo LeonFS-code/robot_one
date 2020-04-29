@@ -6,6 +6,9 @@
   <xacro:include filename="$(find robot_one_description)/urdf/materials.xacro" />
   <!-- <xacro:include filename="$(find abrobot_description)/urdf/macros.xacro"/> -->
 
+  <xacro:property name="DIAMETRO_ROBO" value="0.60"/>
+  <xacro:property name="EIXO_ROBO" value="0.05"/>
+  <xacro:property name="M_PI" value="3.1415926535897931" />
 
   <!-- Base Robotic -->
   <link name="base_link">
@@ -19,7 +22,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <cylinder length="0.0095" radius="0.2245"/>
+          <cylinder length="0.0095" radius="${DIAMETRO_ROBO/2}"/>
         </geometry>
         <material name ="White" />
       </visual>
@@ -27,11 +30,14 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <cylinder length="0.0095" radius="0.2245"/>
+          <cylinder length="0.0095" radius="${DIAMETRO_ROBO/2}"/>
         </geometry>
       </collision>
   </link>
 
+
+
+  <!-- Roda Castor Frontal -->
   <link name="front_caster">
     <inertial>
       <mass value="0.001" />
@@ -66,7 +72,7 @@
   </joint>  
 
 
-
+  <!-- Roda Castor Traseira -->
   <link name="rear_caster">
     <inertial>
       <mass value="0.001" />
@@ -89,7 +95,7 @@
       <collision>
         <origin xyz="0 0 0" rpy="-1.5707 0 1.5707" />
         <geometry>
-			<mesh filename="package://robot_one_description/meshes/castor.dae"/>
+          <mesh filename="package://robot_one_description/meshes/castor.dae"/>
         </geometry>
       </collision>
   </link>
@@ -101,10 +107,7 @@
   </joint>
 
 
-
-
-
-  <!-- Roda Castor Frontal -->
+  <!-- Eixo Roda Esquerda -->
   <link name="left_axle_link">
     <inertial>
       <origin xyz="0 0 0"/>
@@ -116,7 +119,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 1.5707 1.5707" />
         <geometry>
-          <cylinder radius="0.00635" length = "0.00635"/>
+          <cylinder radius="0.00635" length = "${EIXO_ROBO}"/>
         </geometry>
         <material name ="light_grey" />
       </visual>
@@ -124,20 +127,20 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 1.5707 1.5707" />
         <geometry>
-          <cylinder radius="0.00635" length = "0.00635"/>
+          <cylinder radius="0.00635" length = "${EIXO_ROBO}"/>
         </geometry>
       </collision>
   </link>
 
   <joint name="left_axle_joint" type="fixed">
-    <origin xyz="0 0.171475 0.017" rpy="0 0 0"/>
+    <origin xyz="0 -${DIAMETRO_ROBO/2} 0" rpy="0 0 0"/>
     <parent link="base_link"/>
     <child link="left_axle_link"/>
     <axis xyz="0 1 0"/>
   </joint>
 
 
-
+  <!-- Eixo Roda Direita -->
   <link name="right_axle_link">
     <inertial>
       <origin xyz="0 0 0"/>
@@ -147,31 +150,31 @@
       </inertial>
 
       <visual>
-        <origin xyz="0 0 0" rpy="0 1.5707 1.5707" />
+        <origin xyz="0 0 0" rpy="0 ${M_PI/2} ${M_PI/2}" />
         <geometry>
-          <cylinder radius="0.00635" length = "0.00635"/>
+          <cylinder radius="0.00635" length = "${EIXO_ROBO}"/>
         </geometry>
         <material name ="light_grey" />
       </visual>
 
       <collision>
-        <origin xyz="0 0 0" rpy="0 1.5707 1.5707" />
+        <origin xyz="0 0 0" rpy="0 ${M_PI/2} ${M_PI/2}" />
         <geometry>
-          <cylinder radius="0.00635" length = "0.00635"/>
+          <cylinder radius="0.00635" length = "${EIXO_ROBO}"/>
         </geometry>
       </collision>
   </link>
 
   <joint name="right_axle_joint" type="fixed">
-    <origin xyz="0 -0.171475 0.017" rpy="0 0 0"/>
+    <origin xyz="0 ${DIAMETRO_ROBO/2} 0" rpy="0 0 0"/>
     <parent link="base_link"/>
     <child link="right_axle_link"/>
     <axis xyz="0 1 0"/>
-  </joint>
+  </joint> -->
 
 
 
-  <link name="left_wheel_link">
+  <!-- <link name="left_wheel_link">
     <inertial>
       <origin xyz="0 0 0"/>
       <mass value="0.01" />
@@ -180,7 +183,7 @@
       </inertial>
 
       <visual>
-        <origin xyz="0 0 -0.040" rpy="0 1.5707 1.5707" />
+        <origin xyz="0 0 0" rpy="0 1.5707 1.5707" />
         <geometry>
           <cylinder radius="0.0762" length = "0.03175"/>
         </geometry>
@@ -188,7 +191,7 @@
       </visual>
 
       <collision>
-        <origin xyz="0 0 -0.040" rpy="0 1.5707 1.5707" />
+        <origin xyz="0 0 0" rpy="0 1.5707 1.5707" />
         <geometry>
           <cylinder radius="0.076" length = "0.03175"/>
         </geometry>
@@ -200,11 +203,11 @@
     <parent link="left_axle_link"/>
     <child link="left_wheel_link"/>
     <axis xyz="0 1 0"/>
-  </joint>
+  </joint> -->
 
 
 
-  <link name="right_wheel_link">
+  <!-- <link name="right_wheel_link">
     <inertial>
       <origin xyz="0 0 0"/>
       <mass value="0.01" />
@@ -226,14 +229,17 @@
           <cylinder radius="0.076" length = "0.03175"/>
         </geometry>
       </collision>
-  </link>
+  </link> -->
 
-  <joint name="right_wheel_joint" type="continuous">
+
+  <!-- Fixed because we never rotate it anyway, it is just for show -->
+  <!-- NOTE This may prevent gazebo from working with this model -->
+<!--   <joint name="right_wheel_joint" type="continuous">
     <origin xyz="0 -0.01905 0" rpy="0 0 0"/>
     <parent link="right_axle_link"/>
     <child link="right_wheel_link"/>
     <axis xyz="0 1 0"/>
-  </joint>
+  </joint> -->
 
 
 </robot>

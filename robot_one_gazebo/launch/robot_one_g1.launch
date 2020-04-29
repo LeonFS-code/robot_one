@@ -30,4 +30,7 @@
         args="-urdf -param robot_one_description -model robot_one -x $(arg x) -y $(arg y) -z $(arg z)" >
     </node>
 
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
+
+
 </launch>
