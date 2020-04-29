@@ -15,4 +15,4 @@
 <!--   <node name="rviz" pkg="rviz" type="rviz"/> -->
  <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(find robot_one_description)/launch/abrobot_amcl_navigation.rviz"/> -->
 
-</launch<name />
+</launch>

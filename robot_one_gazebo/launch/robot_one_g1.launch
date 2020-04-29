@@ -26,8 +26,8 @@
     <!--  ******************** Robot Model ********************  -->
     <param name="robot_one_description" command="$(find xacro)/xacro --inorder '$(find robot_one_description)/urdf/robot_one.xacro'"/>
 
-    <node pkg="gazebo_ros" type="spawn_model" name="robot_one_spawn" 
-        args="-urdf -param robot_description -model robot_one -x $(arg x) -y $(arg y) -z $(arg z)" >
+    <node pkg="gazebo_ros" type="spawn_model" name="robot_one_spawn" output="screen"
+        args="-urdf -param robot_one_description -model robot_one -x $(arg x) -y $(arg y) -z $(arg z)" >
     </node>
 
 </launch>
