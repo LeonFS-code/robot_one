@@ -4,7 +4,11 @@
 
   <xacro:include filename="$(find robot_one_description)/urdf/robot_one.gazebo" />
   <xacro:include filename="$(find robot_one_description)/urdf/materials.xacro" />
-  <!-- <xacro:include filename="$(find abrobot_description)/urdf/macros.xacro"/> -->
+ 
+
+  <xacro:property name="D_ROBO" value="0.5" />
+  <xacro:property name="EIXO_ROBO" value="0.00635" />
+  <xacro:property name="PI" value="3.1415926535897931" />
 
 
   <!-- Base Robotic -->
@@ -19,7 +23,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <cylinder length="0.0095" radius="0.2245"/>
+          <cylinder length="0.0095" radius="${D_ROBO/2}"/>
         </geometry>
         <material name ="White" />
       </visual>
@@ -27,11 +31,13 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <cylinder length="0.0095" radius="0.2245"/>
+          <cylinder length="0.0095" radius="${D_ROBO/2}"/>
         </geometry>
       </collision>
   </link>
 
+
+  <!-- Caster Whells -->
   <link name="front_caster">
     <inertial>
       <mass value="0.001" />
@@ -89,7 +95,7 @@
       <collision>
         <origin xyz="0 0 0" rpy="-1.5707 0 1.5707" />
         <geometry>
-			<mesh filename="package://robot_one_description/meshes/castor.dae"/>
+      <mesh filename="package://robot_one_description/meshes/castor.dae"/>
         </geometry>
       </collision>
   </link>
@@ -104,7 +110,8 @@
 
 
 
-  <!-- Roda Castor Frontal -->
+
+  <!-- Axles -->
   <link name="left_axle_link">
     <inertial>
       <origin xyz="0 0 0"/>
@@ -114,28 +121,27 @@
       </inertial>
 
       <visual>
-        <origin xyz="0 0 0" rpy="0 1.5707 1.5707" />
+        <origin xyz="0 0 0" rpy="0 ${PI/2} ${PI/2}" />
         <geometry>
-          <cylinder radius="0.00635" length = "0.00635"/>
+          <cylinder radius="${EIXO_ROBO}" length = "${EIXO_ROBO}"/>
         </geometry>
         <material name ="light_grey" />
       </visual>
 
       <collision>
-        <origin xyz="0 0 0" rpy="0 1.5707 1.5707" />
+        <origin xyz="0 0 0" rpy="0 ${PI/2} ${PI/2}" />
         <geometry>
-          <cylinder radius="0.00635" length = "0.00635"/>
+          <cylinder radius="${EIXO_ROBO}" length = "${EIXO_ROBO}"/>
         </geometry>
       </collision>
   </link>
 
   <joint name="left_axle_joint" type="fixed">
-    <origin xyz="0 0.171475 0.017" rpy="0 0 0"/>
+    <origin xyz="0 ${D_ROBO/2 + EIXO_ROBO} 0" rpy="0 0 0"/>
     <parent link="base_link"/>
     <child link="left_axle_link"/>
     <axis xyz="0 1 0"/>
   </joint>
-
 
 
   <link name="right_axle_link">
@@ -147,23 +153,23 @@
       </inertial>
 
       <visual>
-        <origin xyz="0 0 0" rpy="0 1.5707 1.5707" />
+        <origin xyz="0 0 0" rpy="0 ${PI/2} ${PI/2}" />
         <geometry>
-          <cylinder radius="0.00635" length = "0.00635"/>
+          <cylinder radius="${EIXO_ROBO}" length = "${EIXO_ROBO}"/>
         </geometry>
         <material name ="light_grey" />
       </visual>
 
       <collision>
-        <origin xyz="0 0 0" rpy="0 1.5707 1.5707" />
+        <origin xyz="0 0 0" rpy="0 ${PI/2} ${PI/2}" />
         <geometry>
-          <cylinder radius="0.00635" length = "0.00635"/>
+          <cylinder radius="${EIXO_ROBO}" length = "${EIXO_ROBO}"/>
         </geometry>
       </collision>
   </link>
 
   <joint name="right_axle_joint" type="fixed">
-    <origin xyz="0 -0.171475 0.017" rpy="0 0 0"/>
+    <origin xyz="0 -${D_ROBO/2 + EIXO_ROBO} 0" rpy="0 0 0"/>
     <parent link="base_link"/>
     <child link="right_axle_link"/>
     <axis xyz="0 1 0"/>
@@ -171,6 +177,8 @@
 
 
 
+  <!-- Wheels -->
+  
   <link name="left_wheel_link">
     <inertial>
       <origin xyz="0 0 0"/>
@@ -180,7 +188,7 @@
       </inertial>
 
       <visual>
-        <origin xyz="0 0 -0.040" rpy="0 1.5707 1.5707" />
+        <origin xyz="0 0 0" rpy="0 1.5707 1.5707" />
         <geometry>
           <cylinder radius="0.0762" length = "0.03175"/>
         </geometry>
@@ -188,7 +196,7 @@
       </visual>
 
       <collision>
-        <origin xyz="0 0 -0.040" rpy="0 1.5707 1.5707" />
+        <origin xyz="0 0 0" rpy="0 1.5707 1.5707" />
         <geometry>
           <cylinder radius="0.076" length = "0.03175"/>
         </geometry>
