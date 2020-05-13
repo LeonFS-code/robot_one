@@ -30,4 +30,6 @@
         args="-urdf -param robot_one_description -model robot_one -x $(arg x) -y $(arg y) -z $(arg z)" >
     </node>
 
+    <node name="teleop_twist_keyboard" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" output="screen" launch-prefix="xterm -e"/>
+
 </launch>

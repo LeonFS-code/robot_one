@@ -9,6 +9,7 @@
   <xacro:property name="D_ROBO" value="0.5" />
   <xacro:property name="EIXO_ROBO" value="0.00635" />
   <xacro:property name="PI" value="3.1415926535897931" />
+  <xacro:property name="D_RODA" value="0.104" />
 
 
   <!-- Base Robotic -->
@@ -190,7 +191,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 1.5707 1.5707" />
         <geometry>
-          <cylinder radius="0.0762" length = "0.03175"/>
+          <cylinder radius="${D_RODA}" length = "0.03175"/>
         </geometry>
         <material name ="black" />
       </visual>
@@ -198,7 +199,7 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 1.5707 1.5707" />
         <geometry>
-          <cylinder radius="0.076" length = "0.03175"/>
+          <cylinder radius="${D_RODA}" length = "0.03175"/>
         </geometry>
       </collision>
   </link>
@@ -223,7 +224,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 1.5707 1.5707" />
         <geometry>
-          <cylinder radius="0.0762" length = "0.03175"/>
+          <cylinder radius="${D_RODA}" length = "0.03175"/>
         </geometry>
         <material name ="black" />
       </visual>
@@ -231,7 +232,7 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 1.5707 1.5707" />
         <geometry>
-          <cylinder radius="0.076" length = "0.03175"/>
+          <cylinder radius="${D_RODA}" length = "0.03175"/>
         </geometry>
       </collision>
   </link>
