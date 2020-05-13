@@ -9,7 +9,7 @@
   <xacro:property name="D_ROBO" value="0.5" />
   <xacro:property name="EIXO_ROBO" value="0.00635" />
   <xacro:property name="PI" value="3.1415926535897931" />
-  <xacro:property name="D_RODA" value="0.104" />
+  <xacro:property name="D_RODA" value="0.105" />
 
 
   <!-- Base Robotic -->
@@ -244,5 +244,97 @@
     <axis xyz="0 1 0"/>
   </joint>
 
+
+  <!-- LIDAR -->
+<link name="base_laser">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 -0.03" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://robot_one_description/meshes/rplidar.stl" scale="0.01 0.01 0.01" />
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <joint name="laser_joint" type="fixed">
+    <axis xyz="0 0 0" />
+    <origin xyz="0 0 0.1" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="base_laser"/>
+  </joint>
+
+  <!-- Real Sense -->
+
+  <!-- LIDAR -->
+<link name="Front_Real_Sense">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://robot_one_description/meshes/IntelRealsense_D435_Multibody.stl" scale="0.01 0.01 0.01" />
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://robot_one_description/meshes/IntelRealsense_D435_Multibody.stl" scale="0.01 0.01 0.01" />
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <joint name="Front_Real_Sense_joint" type="fixed">
+    <axis xyz="0 0 0" />
+    <origin xyz="0.2 0 0.07" rpy="-${PI/2} 0 -${PI/2}"/>
+    <parent link="base_link"/>
+    <child link="Front_Real_Sense"/>
+  </joint>
+
+
+<link name="Rear_Real_Sense">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://robot_one_description/meshes/IntelRealsense_D435_Multibody.stl" scale="0.01 0.01 0.01" />
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://robot_one_description/meshes/IntelRealsense_D435_Multibody.stl" scale="0.01 0.01 0.01" />
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <joint name="Rear_Real_Sense_joint" type="fixed">
+    <axis xyz="0 0 0" />
+    <origin xyz="-0.2 0 0.07" rpy="-${PI/2} 0 ${PI/2}"/>
+    <parent link="base_link"/>
+    <child link="Rear_Real_Sense"/>
+  </joint>
 
 </robot>
