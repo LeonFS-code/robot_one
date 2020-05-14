@@ -270,14 +270,14 @@
 
   <joint name="laser_joint" type="fixed">
     <axis xyz="0 0 0" />
-    <origin xyz="0 0 0.1" rpy="0 0 0"/>
+    <origin xyz="0 0 0.2" rpy="0 0 0"/>
     <parent link="base_link"/>
     <child link="base_laser"/>
   </joint>
 
   <!-- Real Sense -->
 
-  <!-- LIDAR -->
+
 <link name="Front_Real_Sense">
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -336,5 +336,6 @@
     <parent link="base_link"/>
     <child link="Rear_Real_Sense"/>
   </joint>
+
 
 </robot>
