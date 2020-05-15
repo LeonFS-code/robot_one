@@ -278,7 +278,7 @@
   <!-- Real Sense -->
 
 
-<link name="Front_Real_Sense">
+<link name="Front_Camera">
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
@@ -300,15 +300,15 @@
     </inertial>
   </link>
 
-  <joint name="Front_Real_Sense_joint" type="fixed">
+  <joint name="Front_Camera_joint" type="fixed">
     <axis xyz="0 0 0" />
     <origin xyz="0.2 0 0.07" rpy="-${PI/2} 0 -${PI/2}"/>
     <parent link="base_link"/>
-    <child link="Front_Real_Sense"/>
+    <child link="Front_Camera"/>
   </joint>
 
 
-<link name="Rear_Real_Sense">
+<link name="Rear_Camera">
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
@@ -330,11 +330,11 @@
     </inertial>
   </link>
 
-  <joint name="Rear_Real_Sense_joint" type="fixed">
+  <joint name="Rear_Camera_joint" type="fixed">
     <axis xyz="0 0 0" />
     <origin xyz="-0.2 0 0.07" rpy="-${PI/2} 0 ${PI/2}"/>
     <parent link="base_link"/>
-    <child link="Rear_Real_Sense"/>
+    <child link="Rear_Camera"/>
   </joint>
 
 
