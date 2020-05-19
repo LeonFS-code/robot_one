@@ -1,12 +1,9 @@
 # RobotOne
 
-*****
 
 RobotOne is a robot developed by Valkyrie UAV, this robot is created to be simulated in Gazebo and RViz
 
 ## Steps tos create RobotOne based on ROS and Gazebo
-
-******
 
 ### first step
 RobotOne is based on Package the contains a C++ parser for the Unified Robot Description Format (URDF), which is an XML format for representing a robot model.
@@ -16,7 +13,6 @@ All components were created in the XML file with joints, collisions, pose, inert
 
 ## Steps clone and simulate this repository
 
-****
 
 1.Create a ROS Workspace (if you don't have yet)
 ```
