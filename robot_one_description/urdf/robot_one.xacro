@@ -250,7 +250,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <box size="0.1 0.1 0.1"/>
+         <mesh filename="package://robot_one_description/meshes/rplidar.stl" scale="0.01 0.01 0.01" />
       </geometry>
     </collision>
 
@@ -280,14 +280,14 @@
 
 <link name="Front_Camera">
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="0 0 0" rpy="${PI/2} 0 ${PI/2}"/>
       <geometry>
         <mesh filename="package://robot_one_description/meshes/IntelRealsense_D435_Multibody.stl" scale="0.01 0.01 0.01" />
       </geometry>
     </collision>
 
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="0 0 0" rpy="${PI/2} 0 ${PI/2}"/>
       <geometry>
         <mesh filename="package://robot_one_description/meshes/IntelRealsense_D435_Multibody.stl" scale="0.01 0.01 0.01" />
       </geometry>
@@ -295,14 +295,14 @@
 
     <inertial>
       <mass value="1e-5" />
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="0 0 0" rpy="${PI/2} 0 ${PI/2}"/>
       <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
     </inertial>
   </link>
 
   <joint name="Front_Camera_joint" type="fixed">
-    <axis xyz="0 0 0" />
-    <origin xyz="0.2 0 0.07" rpy="-${PI/2} 0 -${PI/2}"/>
+    <axis xyz="0 1 0" />
+    <origin xyz="0.1995 0 0.035" rpy="0 0 0"/>
     <parent link="base_link"/>
     <child link="Front_Camera"/>
   </joint>
@@ -310,14 +310,14 @@
 
 <link name="Rear_Camera">
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="0 0 0" rpy="${PI/2} 0 ${PI/2}"/>
       <geometry>
         <mesh filename="package://robot_one_description/meshes/IntelRealsense_D435_Multibody.stl" scale="0.01 0.01 0.01" />
       </geometry>
     </collision>
 
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="0 0 0" rpy="${PI/2} 0 ${PI/2}"/>
       <geometry>
         <mesh filename="package://robot_one_description/meshes/IntelRealsense_D435_Multibody.stl" scale="0.01 0.01 0.01" />
       </geometry>
@@ -325,14 +325,14 @@
 
     <inertial>
       <mass value="1e-5" />
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="0 0 0" rpy="${PI/2} 0 ${PI/2}"/>
       <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
     </inertial>
   </link>
 
   <joint name="Rear_Camera_joint" type="fixed">
-    <axis xyz="0 0 0" />
-    <origin xyz="-0.2 0 0.07" rpy="-${PI/2} 0 ${PI/2}"/>
+    <axis xyz="0 1 0" />
+    <origin xyz="-0.1995 0 0.035" rpy="0 0 ${PI}"/>
     <parent link="base_link"/>
     <child link="Rear_Camera"/>
   </joint>
