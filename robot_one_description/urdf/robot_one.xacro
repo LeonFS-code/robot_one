@@ -26,7 +26,7 @@
         <geometry>
           <cylinder length="0.0095" radius="${D_ROBO/2}"/>
         </geometry>
-        <material name ="White" />
+        <material name ="orange" />
       </visual>
 
       <collision>
@@ -193,7 +193,7 @@
         <geometry>
           <cylinder radius="${D_RODA}" length = "0.03175"/>
         </geometry>
-        <material name ="black" />
+        <material name ="blue" />
       </visual>
 
       <collision>
@@ -226,7 +226,7 @@
         <geometry>
           <cylinder radius="${D_RODA}" length = "0.03175"/>
         </geometry>
-        <material name ="black" />
+        <material name ="blue" />
       </visual>
 
       <collision>
@@ -259,6 +259,7 @@
       <geometry>
         <mesh filename="package://robot_one_description/meshes/rplidar.stl" scale="0.01 0.01 0.01" />
       </geometry>
+      <material name ="blue" />
     </visual>
 
     <inertial>
@@ -291,6 +292,7 @@
       <geometry>
         <mesh filename="package://robot_one_description/meshes/IntelRealsense_D435_Multibody.stl" scale="0.01 0.01 0.01" />
       </geometry>
+      <material name ="green" />
     </visual>
 
     <inertial>
@@ -321,6 +323,7 @@
       <geometry>
         <mesh filename="package://robot_one_description/meshes/IntelRealsense_D435_Multibody.stl" scale="0.01 0.01 0.01" />
       </geometry>
+      <material name ="green" />
     </visual>
 
     <inertial>

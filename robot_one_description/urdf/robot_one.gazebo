@@ -21,7 +21,7 @@
 
 
   <gazebo reference="base_link">
-    <material>Gazebo/DarkGrey</material>
+    <material>Gazebo/Orange</material>
   </gazebo>
 
   <gazebo reference="left_wheel_link">
@@ -38,6 +38,7 @@
 
 
 <gazebo reference="Front_Camera">
+   <material>Gazebo/Green</material>
   <sensor name="Front_Camera" type="depth">
     <update_rate>20</update_rate>
     <camera>
@@ -80,6 +81,7 @@
 </gazebo>
 
 <gazebo reference="Rear_Camera">
+   <material>Gazebo/Green</material>
   <sensor name="Rear_Camera" type="depth">
     <update_rate>20</update_rate>
     <camera>
@@ -127,6 +129,7 @@
  
 
   <gazebo reference="base_laser">
+     <material>Gazebo/Blue</material>
     <sensor type="gpu_ray" name="lidar_sensor">
       <pose>0 0 0 0 0 0</pose>
       <visualize>false</visualize>
